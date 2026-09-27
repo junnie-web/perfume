@@ -35,7 +35,7 @@ export async function POST() {
     try {
       const client = new Anthropic();
       const compact = catalog.map((p) => ({ id: p.id, brand: p.brand, name: p.name, family: p.family, notes: notesOf(p), seasons: p.seasons, mood: p.mood }));
-      const prompt = `너는 향수 큐레이션 사이트 '향기록'의 추천 엔진이야. 스포티파이의 '당신을 위한 추천'처럼, 사용자의 위시리스트·보유 컬렉션·최근 착용 기록을 보고 카탈로그에서 3~4개를 골라 줘.
+      const prompt = `너는 향수 큐레이션 사이트 'Parfumoir(파퓨무아)'의 추천 엔진이야. 스포티파이의 '당신을 위한 추천'처럼, 사용자의 위시리스트·보유 컬렉션·최근 착용 기록을 보고 카탈로그에서 3~4개를 골라 줘.
 
 규칙:
 - 위시리스트나 보유 컬렉션에 이미 있는 id는 제외해.

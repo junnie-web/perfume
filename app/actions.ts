@@ -136,7 +136,7 @@ export async function createRequest(brand: string, name: string): Promise<Action
   // 이미 등록된 향수인지 확인
   const { data: existing } = await supabase.from("perfumes").select("id, brand, name");
   const hit = (existing ?? []).find((p) => norm(p.brand) === norm(brand) && norm(p.name) === norm(name));
-  if (hit) return { ok: false, message: "이미 향기록에 있는 향수예요.", id: hit.id };
+  if (hit) return { ok: false, message: "이미 Parfumoir에 있는 향수예요.", id: hit.id };
 
   const slug = requestSlug(brand, name);
   let { data: req } = await supabase.from("requests").select("id, status").eq("slug", slug).maybeSingle();

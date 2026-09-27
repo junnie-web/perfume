@@ -4,7 +4,7 @@ import type { Newsletter } from "./types";
 import { vol2 } from "./utils";
 
 const siteUrl = () => (process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000").replace(/\/$/, "");
-const from = () => process.env.NEWSLETTER_FROM ?? "향기록 <onboarding@resend.dev>";
+const from = () => process.env.NEWSLETTER_FROM ?? "Parfumoir <onboarding@resend.dev>";
 
 function resend() {
   const key = process.env.RESEND_API_KEY;
@@ -29,15 +29,15 @@ export async function sendConfirmEmail(email: string, token: string) {
   const { error } = await resend().emails.send({
     from: from(),
     to: [email],
-    subject: "[향기록] 뉴스레터 구독을 확인해 주세요",
+    subject: "[Parfumoir] 뉴스레터 구독을 확인해 주세요",
     html: frame(
-      `<div style="font-size:12px;letter-spacing:2px;color:#6B6476">향기록 레터</div>
+      `<div style="font-size:12px;letter-spacing:2px;color:#6B6476">PARFUMOIR LETTER</div>
        <h1 style="font-family:Georgia,serif;font-size:24px;margin:10px 0 16px;color:#221E2B">구독 확인</h1>
-       <p style="font-size:15px;line-height:1.8;color:#221E2B">아래 버튼을 누르면 향기록 뉴스레터 구독이 완료돼요.</p>
+       <p style="font-size:15px;line-height:1.8;color:#221E2B">아래 버튼을 누르면 Parfumoir 뉴스레터 구독이 완료돼요.</p>
        <p style="margin:24px 0"><a href="${link}" style="background:#6B2A4A;color:#fff;text-decoration:none;padding:12px 22px;border-radius:999px;font-size:15px">구독 확인하기</a></p>`,
       "직접 신청하지 않았다면 이 메일을 무시하세요. 확인하지 않으면 메일이 가지 않아요."
     ),
-    text: `아래 링크를 열면 향기록 뉴스레터 구독이 완료돼요.\n${link}\n\n직접 신청하지 않았다면 이 메일을 무시하세요.`,
+    text: `아래 링크를 열면 Parfumoir 뉴스레터 구독이 완료돼요.\n${link}\n\n직접 신청하지 않았다면 이 메일을 무시하세요.`,
   });
   if (error) throw new Error(error.message);
 }
@@ -50,7 +50,7 @@ export async function sendNewsletterEmails(n: Newsletter, subs: { email: string;
     .map((p) => `<p style="margin:0 0 18px;font-size:16px;line-height:1.85;color:#221E2B">${esc(p).replace(/\n/g, "<br>")}</p>`)
     .join("");
   const webLink = `${siteUrl()}/newsletter/${n.vol}`;
-  const subject = `[향기록 레터 Vol. ${vol2(n.vol)}] ${n.title}`;
+  const subject = `[Parfumoir Letter Vol. ${vol2(n.vol)}] ${n.title}`;
   let sent = 0;
   for (let i = 0; i < subs.length; i += 100) {
     const batch = subs.slice(i, i + 100).map((s) => {
@@ -65,13 +65,13 @@ export async function sendNewsletterEmails(n: Newsletter, subs: { email: string;
           "List-Unsubscribe-Post": "List-Unsubscribe=One-Click",
         },
         html: frame(
-          `<div style="font-size:12px;letter-spacing:2px;color:#6B6476">향기록 레터 · VOL. ${vol2(n.vol)}</div>
+          `<div style="font-size:12px;letter-spacing:2px;color:#6B6476">PARFUMOIR LETTER · VOL. ${vol2(n.vol)}</div>
            <h1 style="font-family:Georgia,'AppleMyungjo',serif;font-size:26px;line-height:1.35;margin:10px 0 24px;color:#221E2B">${esc(n.title)}</h1>
            ${paras}
            <p style="margin:8px 0 0;font-size:13px"><a href="${webLink}" style="color:#6B2A4A">웹에서 보기</a></p>`,
-          `향기록 뉴스레터를 구독해 주셔서 감사해요.<br><a href="${unsub}" style="color:#6B6476">구독 취소</a>`
+          `Parfumoir 뉴스레터를 구독해 주셔서 감사해요.<br><a href="${unsub}" style="color:#6B6476">구독 취소</a>`
         ),
-        text: `향기록 레터 Vol. ${vol2(n.vol)}\n\n${n.title}\n\n${n.body}\n\n웹에서 보기: ${webLink}\n구독 취소: ${unsub}`,
+        text: `Parfumoir Letter Vol. ${vol2(n.vol)}\n\n${n.title}\n\n${n.body}\n\n웹에서 보기: ${webLink}\n구독 취소: ${unsub}`,
       };
     });
     const { error } = await r.batch.send(batch);

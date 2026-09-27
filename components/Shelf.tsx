@@ -61,7 +61,7 @@ export default function Shelf({ perfumes, ratings, wished, owned, loggedIn, pend
           <div className="miss">
             <div>
               <div className="eyebrow">검색 결과 없음</div>
-              <h3>&lsquo;{q}&rsquo;은(는) 아직 향기록에 없어요</h3>
+              <h3>&lsquo;{q}&rsquo;은(는) 아직 Parfumoir에 없어요</h3>
               <p className="muted" style={{ margin: "4px 0 0" }}>추가를 요청해 주세요. 요청이 많이 쌓인 향수부터 등록돼요.</p>
             </div>
             {reqMatches.length > 0 && (

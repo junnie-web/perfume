@@ -17,7 +17,7 @@ export default async function NewsletterPage({ searchParams }: { searchParams: P
       {confirmed === "0" && <div className="notice">확인 링크가 올바르지 않거나 만료됐어요. 다시 구독 신청해 주세요.</div>}
       {isAdmin && <div className="ownerbar"><Link className="btn primary" href="/admin#newsletter">+ 새 뉴스레터 쓰기</Link></div>}
       <SubscribeForm defaultEmail={user?.email ?? ""} />
-      <div className="sec-h"><h2>향기록 레터</h2><span className="mono muted">{list.length}호</span></div>
+      <div className="sec-h"><h2>Parfumoir Letter</h2><span className="mono muted">{list.length}호</span></div>
       {list.length ? (
         <div className="nl">
           {list.map((n) => (

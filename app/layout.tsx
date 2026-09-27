@@ -7,8 +7,8 @@ import NavTabs from "@/components/NavTabs";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "향기록",
-  description: "브랜드별 향수와 큐레이터 리뷰, 향뿌캘린더, 뉴스레터가 있는 향수 큐레이팅 사이트",
+  title: "Parfumoir",
+  description: "파퓨무아, 향의 회고록. 브랜드별 향수와 큐레이터 리뷰, 향뿌캘린더, 뉴스레터가 있는 향수 큐레이팅 사이트",
 };
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
@@ -33,8 +33,8 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           <header>
             <div className="top">
               <Link href="/" className="mark" style={{ textDecoration: "none" }}>
-                <h1>향기록</h1>
-                <span className="latin">a scent journal</span>
+                <h1 className="brandmark">Parfumoir</h1>
+                <span className="brandsub">파퓨무아 · 향의 회고록</span>
               </Link>
               <div className="nav-right">
                 {user ? (
@@ -53,7 +53,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
             <NavTabs pending={pending ?? 0} />
           </header>
           <main>{children}</main>
-          <footer className="site">향기록 · 향을 기록하는 곳</footer>
+          <footer className="site">Parfumoir · 향의 회고록</footer>
         </div>
       </body>
     </html>

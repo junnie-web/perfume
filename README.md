@@ -1,4 +1,4 @@
-# 향기록
+# Parfumoir (파퓨무아)
 
 브랜드별 향수와 큐레이터 리뷰, 이용자 인용 리뷰, 내 컬렉션, 위시리스트 AI 추천, 향뿌캘린더, 신향 추가 요청판, 뉴스레터(웹 + 메일 구독)가 있는 향수 큐레이팅 사이트예요.
 
@@ -48,8 +48,8 @@
 1. [resend.com](https://resend.com)에서 가입해요.
 2. 왼쪽 **API Keys** → **Create API Key** → 이름 `hyanggirok`, 권한 **Sending access** → 만든 키를 복사해요. → `RESEND_API_KEY`
 3. 보내는 사람 주소 → `NEWSLETTER_FROM`
-   - **도메인이 없으면**: `향기록 <onboarding@resend.dev>` 로 두세요. 이 경우 **Resend에 가입한 내 이메일로만** 보낼 수 있어서 테스트용이에요.
-   - **구독자에게 실제로 보내려면** 도메인이 필요해요(예: `hyanggirok.com`, 1년 1~2만 원). Resend의 **Domains → Add Domain**에서 도메인을 등록하고 안내된 DNS 값을 도메인 구입처에 넣으면 돼요. 그 뒤 `향기록 <letter@내도메인>` 처럼 바꿔요.
+   - **도메인이 없으면**: `Parfumoir <onboarding@resend.dev>` 로 두세요. 이 경우 **Resend에 가입한 내 이메일로만** 보낼 수 있어서 테스트용이에요.
+   - **구독자에게 실제로 보내려면** 도메인이 필요해요(예: `parfumoir.kr`, 1년 1~2만 원). Resend의 **Domains → Add Domain**에서 도메인을 등록하고 안내된 DNS 값을 도메인 구입처에 넣으면 돼요. 그 뒤 `Parfumoir <letter@내도메인>` 처럼 바꿔요.
 
 ## 3. (선택) Claude API — AI 추천
 
@@ -71,7 +71,7 @@
    | `SUPABASE_SERVICE_ROLE_KEY` | 1단계 service_role 키 |
    | `NEXT_PUBLIC_SITE_URL` | 일단 `https://perfume.vercel.app` (5단계에서 실제 주소로 고쳐요) |
    | `RESEND_API_KEY` | 2단계 키 |
-   | `NEWSLETTER_FROM` | `향기록 <onboarding@resend.dev>` |
+   | `NEWSLETTER_FROM` | `Parfumoir <onboarding@resend.dev>` |
    | `ANTHROPIC_API_KEY` | 3단계 키 (없으면 생략) |
    | `ANTHROPIC_MODEL` | `claude-sonnet-5` |
 

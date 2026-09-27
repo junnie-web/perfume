@@ -120,7 +120,7 @@ export default async function PerfumePage({ params }: { params: Promise<{ id: st
                 <div className="who">
                   <div className="av sm" style={{ background: "var(--sunk)", color: "var(--ink)" }}>{(q.profiles?.display_name ?? "?").slice(0, 1)}</div>
                   <div style={{ minWidth: 0 }}>
-                    <div className="n">{q.profiles?.display_name ?? "향기록 이용자"}{q.author_id === user?.id ? " (나)" : ""}</div>
+                    <div className="n">{q.profiles?.display_name ?? "Parfumoir 이용자"}{q.author_id === user?.id ? " (나)" : ""}</div>
                     <div className="mono muted">{ago(q.created_at)}</div>
                   </div>
                   {q.rating && <span className="stars" style={{ marginLeft: "auto" }}>{stars(q.rating)}</span>}
