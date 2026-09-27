@@ -537,3 +537,28 @@ input[type=text],input[type=email],input[type=password],textarea,select{border-r
 /* 달력·통계 */
 .stat .bar,.stat .bar i,.vbar,.vbar i,.fambar{border-radius:0}
 .rate button{font-size:18px}
+
+/* ============ v9: 메뉴 배경은 아이보리, 청록은 포인트로만 ============ */
+.sidenav{background:var(--bg);border-right:1px solid var(--line);color:var(--ink)}
+.side-brand,.sidenav .close{color:var(--ink)}
+.side-brand .brandsub{color:var(--muted)}
+.nav-link,.nav-head.sub{color:var(--ink)}
+.nav-head{color:var(--muted)}
+.nav-head:hover{color:var(--ink)}
+.nav-link.sub{color:var(--muted)}
+.nav-link.sub:hover{color:var(--ink)}
+.nav-link:hover{background:transparent;color:var(--teal-deep)}
+.nav-link[aria-current="page"]{background:transparent;color:var(--teal-deep);font-weight:600;box-shadow:inset 2px 0 0 var(--teal-mid)}
+.nav-link.as-btn{color:var(--muted)}
+.nav-count{color:var(--muted)}
+.nav-badge,.nav-new{background:var(--teal-mid);color:var(--teal-ink)}
+.nav-body .nav-body{border-left-color:var(--line)}
+.nav-account{border-top-color:var(--line)}
+.sidenav .btn.primary{background:var(--teal-mid);border-color:var(--teal-mid);color:var(--teal-ink)}
+.sidenav .btn.primary:hover{background:#86BCB7}
+@media (max-width:960px){
+  .mtop{background:var(--bg);border-bottom:1px solid var(--line)}
+  .mbrand{color:var(--ink)}
+  .burger span{background:var(--ink)}
+}
+/* 청록이 남는 곳: 버튼, 선택 표시, NEW, 요청판·AI 추천 면 */
