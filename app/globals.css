@@ -471,3 +471,69 @@ body{background:var(--bg)}
   .slide-text,.hero-text{padding-left:24px}
   .carousel{aspect-ratio:auto;min-height:300px}
 }
+
+/* ============ v8: 심플·모던 (Pretendard 단일 글꼴, 각진 선) ============ */
+:root{
+  --serif:"Pretendard Variable",Pretendard,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
+  --latin:var(--serif); --sans:var(--serif); --mono:var(--serif);
+  --r:0px;
+}
+body{font-family:var(--sans);font-size:15px;letter-spacing:-.01em;line-height:1.6}
+h1,h2,h3{font-weight:600;letter-spacing:-.02em}
+.mono{font-size:12px;letter-spacing:.02em;font-variant-numeric:tabular-nums}
+.eyebrow,.slide-eyebrow,.card .bn,.rcard .bn,.dhead .bn,.req .rt .bn,.rec .bn,.pyramid .row .k{font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase}
+
+/* 버튼·입력칸: 알약 모양 대신 각진 모양 */
+.btn{border-radius:2px;padding:9px 16px;font-size:13px;font-weight:500;letter-spacing:.02em}
+.btn.ghost{padding-inline:10px}
+input[type=text],input[type=email],input[type=password],textarea,select{border-radius:2px}
+.search input,.subform input{border-radius:2px}
+.seg,.seg button{border-radius:2px}
+.chip{border-radius:2px;background:transparent;border:1px solid var(--line);font-size:12px}
+.tag{border-radius:2px}
+.new,.own,.nav-new,.nav-badge,.count.hot{border-radius:2px}
+
+/* 카드·상자: 둥근 모서리 없애고 얇은 선 */
+.card,.post,.q,.panel,.owner,.composer,.subbox,.issue,.rcard,.colsum,.miss,.empty,.embed,.confirm,.ai,.rec,.scoreboard,.day,.li,.worn .it,.center-card,.sublist ul{border-radius:0}
+.card{padding:20px;gap:12px;min-height:200px}
+.card:hover,.rcard:hover,.issue:hover{border-color:var(--ink)}
+.card .nm{font-size:21px;font-weight:600;letter-spacing:-.02em;line-height:1.25}
+.card .notes{font-size:12.5px}
+.heart{border-radius:0}
+
+/* 향수 상세 */
+.dhead h2{font-size:clamp(32px,5vw,44px);font-weight:600;letter-spacing:-.03em;line-height:1.1}
+.post .body,.reader .prose p,.memo,.rcard p,.embed .et,.issue p{font-family:var(--sans)}
+.post .body{font-size:15.5px;line-height:1.85}
+.meter .bars i{border-radius:0}
+
+/* 목록 제목들 */
+.sec-h h2,.shelf-head h2,.home-sec .sec-h h2,.panel h3,.owner h3,.subbox h3,.issue h3,.reader h2,.quotes-h h3,.miss h3,.calnav h2,.center-card h2,.adminsec>h2{font-family:var(--sans);font-weight:600;letter-spacing:-.02em}
+.shelf-head h2{font-size:26px}
+.li .t b,.req .rt b,.rec b,.rcard b{font-family:var(--sans);font-weight:600;font-size:18px;letter-spacing:-.02em}
+.issue .vol,.reader .vol{font-family:var(--sans);font-weight:300;letter-spacing:-.02em}
+.colsum .big{font-family:var(--sans);font-weight:300}
+
+/* 브랜드 로고: 대문자 + 넓은 자간 (패션 브랜드 느낌) */
+.side-brand .brandmark,.mbrand{font-family:var(--sans);font-weight:600;font-size:17px;letter-spacing:.32em;text-transform:uppercase}
+.side-brand .brandsub{font-size:11px;letter-spacing:.08em}
+.mbrand{font-size:15px}
+
+/* 메뉴: 얇고 단정하게 */
+.sidenav{padding:32px 24px}
+.nav-link,.nav-head.sub{font-size:14px;font-weight:500;letter-spacing:.01em;border-radius:0;padding:9px 8px}
+.nav-link.sub{font-size:13.5px}
+.nav-head{font-size:11px;font-weight:600;letter-spacing:.2em}
+.nav-link[aria-current="page"]{font-weight:600}
+
+/* 메인 사진·배너 문구 */
+.hero-text h1{font-family:var(--sans);font-weight:600;font-size:clamp(28px,3.6vw,42px);letter-spacing:-.03em;line-height:1.2}
+.hero-text p{font-size:15px}
+.slide h3{font-family:var(--sans);font-weight:600;letter-spacing:-.02em}
+.car-btn{border-radius:0;background:rgba(255,253,248,.92);font-size:18px}
+.dots button{border-radius:0;height:2px;width:18px}
+.dots button[aria-selected="true"]{width:32px;border-radius:0}
+
+/* 달력·통계 */
+.stat .bar,.stat .bar i,.vbar,.vbar i,.fambar{border-radius:0}
+.rate button{font-size:18px}
