@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { getViewer } from "@/lib/auth";
 import type { Banner, Newsletter, Perfume, Slide } from "@/lib/types";
-import { DEFAULT_HERO, FALLBACK_PHOTOS, isNew, notesOf, stars, vol2 } from "@/lib/utils";
+import { DEFAULT_HERO, FALLBACK_PHOTOS, isNew, notesOf, vol2 } from "@/lib/utils";
+import Rating from "@/components/Rating";
 import BannerCarousel from "@/components/BannerCarousel";
 
 export const dynamic = "force-dynamic";
@@ -65,7 +66,7 @@ export default async function Home() {
               <Link key={r.perfume_id} href={`/perfumes/${r.perfume_id}`} className="rcard">
                 <span className="bn">{r.perfumes.brand}</span>
                 <b>{r.perfumes.name}</b>
-                <span className="stars">{stars(r.rating)}</span>
+                <Rating value={r.rating} small />
                 <p>{r.body}</p>
               </Link>
             ))}

@@ -3,7 +3,6 @@ import Link from "next/link";
 import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { saveCollectionMemo, toggleCollection } from "@/app/actions";
-import { famColor } from "@/lib/utils";
 
 export default function CollectionCard({ id, brand, name, family, conc, memo, wear }: {
   id: string; brand: string; name: string; family: string; conc: string; memo: string | null; wear: string;
@@ -17,7 +16,7 @@ export default function CollectionCard({ id, brand, name, family, conc, memo, we
       <Link className="open" href={`/perfumes/${id}`}>
         <span className="bn">{brand}</span>
         <span className="nm">{name}</span>
-        <span className="notes"><span className="dot" style={{ background: famColor(family) }} /> {family} · {conc}</span>
+        <span className="fam">{family} · {conc}</span>
       </Link>
       {editing ? (
         <>

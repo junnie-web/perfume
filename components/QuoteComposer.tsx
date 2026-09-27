@@ -7,8 +7,9 @@ import { QuoteIcon } from "./Icons";
 export function RatingInput({ value, onChange, label }: { value: number; onChange: (n: number) => void; label: string }) {
   return (
     <div className="rate" role="group" aria-label={label}>
+      <span className="rate-label">{label}</span>
       {[1, 2, 3, 4, 5].map((i) => (
-        <button type="button" key={i} className={i <= value ? "f" : ""} aria-label={`${i}점`} onClick={() => onChange(i)}>★</button>
+        <button type="button" key={i} aria-pressed={i === value} onClick={() => onChange(i)}>{i}</button>
       ))}
     </div>
   );
@@ -32,7 +33,7 @@ export function QuoteComposer({ perfumeId, perfumeName, loggedIn, embed }: {
     );
   return (
     <div className="composer" style={{ marginTop: 14, width: "100%" }}>
-      <RatingInput value={rating} onChange={setRating} label="내 별점" />
+      <RatingInput value={rating} onChange={setRating} label="내 평점" />
       <textarea
         rows={3}
         maxLength={500}

@@ -13,12 +13,11 @@ type Props = {
   owned: string[];
   loggedIn: boolean;
   pendingRequests: { id: string; brand: string; name: string; votes: number }[];
-  numbers: Record<string, number>;
   brand: string;
   onlyNew: boolean;
 };
 
-export default function Shelf({ perfumes, ratings, wished, owned, loggedIn, pendingRequests, numbers, brand, onlyNew }: Props) {
+export default function Shelf({ perfumes, ratings, wished, owned, loggedIn, pendingRequests, brand, onlyNew }: Props) {
   const [q, setQ] = useState("");
   const wishSet = useMemo(() => new Set(wished), [wished]);
   const ownSet = useMemo(() => new Set(owned), [owned]);
@@ -86,7 +85,7 @@ export default function Shelf({ perfumes, ratings, wished, owned, loggedIn, pend
         )}
         <div className="grid">
           {list.map((p) => (
-            <PerfumeCard key={p.id} p={p} rating={ratings[p.id]} wished={wishSet.has(p.id)} owned={ownSet.has(p.id)} loggedIn={loggedIn} no={numbers[p.id]} />
+            <PerfumeCard key={p.id} p={p} rating={ratings[p.id]} wished={wishSet.has(p.id)} owned={ownSet.has(p.id)} loggedIn={loggedIn} />
           ))}
         </div>
       </section>

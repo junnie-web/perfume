@@ -18,7 +18,7 @@ export default function ReviewEditor({ perfumeId, perfumeName, review }: { perfu
   return (
     <div className="owner" style={{ marginTop: 14 }}>
       <h3>{perfumeName} 리뷰</h3>
-      <RatingInput value={rating} onChange={setRating} label="별점" />
+      <RatingInput value={rating} onChange={setRating} label="평점" />
       <textarea rows={6} value={body} onChange={(e) => setBody(e.target.value)} placeholder="첫 스프레이부터 잔향까지, 어떤 향이었나요?" />
       <div className="two">
         <label className="f">지속력 (1–5)

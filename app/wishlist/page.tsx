@@ -3,7 +3,6 @@ import { redirect } from "next/navigation";
 import { getViewer } from "@/lib/auth";
 import type { Perfume } from "@/lib/types";
 import { notesOf } from "@/lib/utils";
-import FamDot from "@/components/FamDot";
 import { ToggleButton } from "@/components/ToggleButtons";
 import Recommend from "@/components/Recommend";
 
@@ -24,8 +23,7 @@ export default async function WishlistPage() {
         {items.length ? (
           <div className="list">
             {items.map((p) => (
-              <div className="li" key={p.id}>
-                <FamDot family={p.family} />
+              <div className="li two-col" key={p.id}>
                 <Link className="t" href={`/perfumes/${p.id}`}>
                   <b>{p.name}</b>
                   <span>{p.brand} · {p.family} · {notesOf(p).slice(0, 3).join(", ")}</span>

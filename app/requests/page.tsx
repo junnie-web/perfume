@@ -2,7 +2,6 @@ import Link from "next/link";
 import { getViewer } from "@/lib/auth";
 import type { Perfume, RequestRow } from "@/lib/types";
 import { ago, fmtDate, isNew } from "@/lib/utils";
-import FamDot from "@/components/FamDot";
 import RequestForm from "@/components/RequestForm";
 import RequestActions from "@/components/RequestActions";
 
@@ -70,8 +69,7 @@ export default async function RequestsPage() {
             {newOnes.length ? (
               <div className="list">
                 {newOnes.map((p) => (
-                  <div className="li" key={p.id} style={{ gridTemplateColumns: "auto 1fr" }}>
-                    <FamDot family={p.family} />
+                  <div className="li one-col" key={p.id}>
                     <Link className="t" href={`/perfumes/${p.id}`}>
                       <b style={{ fontSize: 18 }}><span className="new">NEW</span>{p.name}</b>
                       <span>{p.brand} · {fmtDate(p.created_at)}</span>

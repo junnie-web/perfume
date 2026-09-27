@@ -1,18 +1,19 @@
 import type { Perfume } from "./types";
 
+/** 향 계열 표시색: 민트 한 가지 색의 진하기로만 구분 (진한 → 옅은) */
 export const FAMILIES: Record<string, string> = {
-  우디: "#8A5A3B",
-  플로럴: "#C2527A",
-  머스크: "#8C86A8",
-  그린: "#4E8A4A",
-  시트러스: "#D19A1E",
-  앰버: "#B8662A",
-  아로마틱: "#3F8A8A",
+  우디: "#2B5451",
+  앰버: "#3B6F6B",
+  아로마틱: "#4F8783",
+  그린: "#679F9A",
+  머스크: "#84B5B0",
+  시트러스: "#A3C9C5",
+  플로럴: "#C2DCD9",
 };
 export const CONCS = ["EDP", "EDT", "Parfum", "Cologne"];
 export const NEW_DAYS = 30;
 
-export const famColor = (f: string) => FAMILIES[f] ?? "#888888";
+export const famColor = (f: string) => FAMILIES[f] ?? "#84B5B0";
 export const stars = (n: number | null | undefined) => "★".repeat(n ?? 0) + "☆".repeat(5 - (n ?? 0));
 export const notesOf = (p: Pick<Perfume, "top" | "heart" | "base">) => [...(p.top ?? []), ...(p.heart ?? []), ...(p.base ?? [])];
 export const isNew = (p: Pick<Perfume, "created_at">) =>
@@ -74,3 +75,6 @@ export const concFull = (c: string) =>
   ({ EDP: "Eau de Parfum", EDT: "Eau de Toilette", Parfum: "Parfum", Cologne: "Eau de Cologne" } as Record<string, string>)[c] ?? c;
 /** 라벨 일련번호 (N° 07) */
 export const labelNo = (n: number | undefined) => (n ? `N° ${String(n).padStart(2, "0")}` : "N° —");
+
+/** 평점 숫자 표기 (4 → "4.0") */
+export const ratingText = (n: number | null | undefined) => (n ? n.toFixed(1) : "–");

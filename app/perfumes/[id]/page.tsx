@@ -2,8 +2,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getViewer } from "@/lib/auth";
 import type { CuratorReview, Perfume, Quote } from "@/lib/types";
-import { ago, concFull, fmtDate, isNew, labelNo, stars } from "@/lib/utils";
-import FamDot from "@/components/FamDot";
+import { ago, concFull, fmtDate, isNew, labelNo } from "@/lib/utils";
+import Rating from "@/components/Rating";
 import { ToggleButton, WearTodayButton } from "@/components/ToggleButtons";
 import { QuoteComposer, DeleteQuoteButton } from "@/components/QuoteComposer";
 import ReviewEditor from "@/components/ReviewEditor";
@@ -24,7 +24,7 @@ function Embed({ p, r }: { p: Perfume; r: CuratorReview | null }) {
     <div className="embed">
       <div className="eh">
         <div className="av sm" style={{ width: 18, height: 18, fontSize: 10 }}>향</div>
-        큐레이터 · {p.name} {r && <span className="stars" style={{ fontSize: 11 }}>{stars(r.rating)}</span>}
+        큐레이터 · {p.name} {r && <Rating value={r.rating} small />}
       </div>
       {r && <div className="et">{r.body}</div>}
     </div>
@@ -71,10 +71,16 @@ export default async function PerfumePage({ params }: { params: Promise<{ id: st
             <div className="bn">{perfume.brand}{perfume.brand_ko ? ` · ${perfume.brand_ko}` : ""}</div>
             <h2>{perfume.name}</h2>
             {perfume.name_ko && <div className="ko">{perfume.name_ko}</div>}
+            {r && !r.is_example && (
+              <div className="stamp" aria-label={`${fmtDate(r.updated_at)}에 쓴 리뷰`}>
+                <span>Parfumoir</span>
+                <b>{fmtDate(r.updated_at).slice(2)}</b>
+                <span>향의 회고록</span>
+              </div>
+            )}
           </div>
           <div className="sub">
             {isNew(perfume) && <span className="new">NEW</span>}
-            <FamDot family={perfume.family} />
             <span className="chip">{perfume.family}</span>
             <span className="tag">{perfume.conc}</span>
             {perfume.year && <span className="mono muted">{perfume.year}</span>}
@@ -100,12 +106,12 @@ export default async function PerfumePage({ params }: { params: Promise<{ id: st
                 <div className="n">큐레이터의 향 리뷰 {r?.is_example && <span className="tag ex">예시</span>}</div>
                 <div className="mono muted">{r ? fmtDate(r.updated_at) : "아직 리뷰를 쓰지 않았어요"}</div>
               </div>
-              {r && <span className="stars" style={{ marginLeft: "auto" }} aria-label={`별점 ${r.rating}점`}>{stars(r.rating)}</span>}
+              {r && <span style={{ marginLeft: "auto" }}><Rating value={r.rating} /></span>}
             </div>
             {r && (
               <>
                 <p className="body">{r.body}</p>
-                <div className="meters"><Meter label="지속력" n={r.longevity} /><Meter label="확산력" n={r.sillage} /></div>
+                <div className="meters"><Meter label="평점" n={r.rating} /><Meter label="지속력" n={r.longevity} /><Meter label="확산력" n={r.sillage} /></div>
               </>
             )}
             <div className="foot">
@@ -128,7 +134,7 @@ export default async function PerfumePage({ params }: { params: Promise<{ id: st
                     <div className="n">{q.profiles?.display_name ?? "Parfumoir 이용자"}{q.author_id === user?.id ? " (나)" : ""}</div>
                     <div className="mono muted">{ago(q.created_at)}</div>
                   </div>
-                  {q.rating && <span className="stars" style={{ marginLeft: "auto" }}>{stars(q.rating)}</span>}
+                  {q.rating && <span style={{ marginLeft: "auto" }}><Rating value={q.rating} small /></span>}
                 </div>
                 <p className="txt">{q.body}</p>
                 <Embed p={perfume} r={r} />
