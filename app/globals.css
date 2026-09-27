@@ -295,3 +295,4 @@ table.simple{width:100%;border-collapse:collapse;font-size:13px}
 table.simple td,table.simple th{padding:8px 6px;border-bottom:1px solid var(--line);text-align:left}
 .tablewrap{overflow-x:auto}
 footer.site{margin-top:64px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--muted)}
+.btn{text-decoration:none}
