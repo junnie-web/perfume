@@ -1,16 +1,17 @@
 import Link from "next/link";
 import type { Perfume } from "@/lib/types";
-import { isNew, notesOf, stars } from "@/lib/utils";
+import { concFull, isNew, labelNo, notesOf, stars } from "@/lib/utils";
 import FamDot from "./FamDot";
 import { HeartButton } from "./ToggleButtons";
 
 export default function PerfumeCard({
-  p, rating, wished, owned, loggedIn,
-}: { p: Perfume; rating?: number | null; wished: boolean; owned: boolean; loggedIn: boolean }) {
+  p, rating, wished, owned, loggedIn, no,
+}: { p: Perfume; rating?: number | null; wished: boolean; owned: boolean; loggedIn: boolean; no?: number }) {
   return (
     <article className="card">
       <HeartButton id={p.id} on={wished} loggedIn={loggedIn} />
       <Link className="open" href={`/perfumes/${p.id}`}>
+        <span className="lbl-top"><span>{labelNo(no)}</span><span>{concFull(p.conc)}</span></span>
         <span className="bn">
           {isNew(p) && <span className="new">NEW</span>}
           {owned && <span className="own">보유</span>}
@@ -18,6 +19,7 @@ export default function PerfumeCard({
         </span>
         <span className="nm">{p.name}</span>
         {p.name_ko && <span className="ko">{p.name_ko}</span>}
+        <span className="lbl-rule" aria-hidden="true" />
         <span className="notes">{notesOf(p).slice(0, 5).join(" · ")}</span>
       </Link>
       <div className="meta">

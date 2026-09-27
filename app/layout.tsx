@@ -30,6 +30,10 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   return (
     <html lang="ko">
       <head>
+        {/* Courier Prime: 라벨·로고용 타자기 글꼴 */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap" />
         {/* Pretendard: 한글·영문 모두 깔끔한 현대적 글꼴 */}
         <link
           rel="stylesheet"

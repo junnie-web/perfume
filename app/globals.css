@@ -584,3 +584,39 @@ input[type=text],input[type=email],input[type=password],textarea,select{border-r
 .nav-group>.nav-head{margin-top:4px}
 .nav-group:last-of-type{border-bottom:1px solid var(--line)}
 .nav-account{border-top:0;padding-top:24px}
+
+/* ============ v12: 빈티지 약국 라벨 (타자기 글꼴 + 두 줄 테두리) ============ */
+:root{
+  --type:"Courier Prime","Courier New",ui-monospace,"Pretendard Variable",Pretendard,monospace;
+  --paper:#FBFBF7;
+}
+/* 타자기 글꼴을 쓰는 곳: 로고, 향수 이름, 작은 라벨 글씨, 버튼 */
+.side-brand .brandmark,.mbrand{font-family:var(--type);font-weight:700;letter-spacing:.22em}
+.eyebrow,.slide-eyebrow,.card .bn,.rcard .bn,.dhead .bn,.req .rt .bn,.rec .bn,.pyramid .row .k,.mono,.tag,.lbl-top,.nav-group>.nav-head,.btn,.new,.own,.stat .c,.day .d,.cal .dow,.votes b,.req .rank,.issue .vol,.reader .vol,.scoreboard .big{font-family:var(--type)}
+.btn{text-transform:uppercase;letter-spacing:.08em;font-size:12.5px;font-weight:700}
+.nav-group>.nav-head{text-transform:uppercase;letter-spacing:.14em;font-size:14px;font-weight:700}
+.nav-link.nav-home{font-family:var(--type);text-transform:uppercase;letter-spacing:.14em;font-size:17px;font-weight:700}
+
+/* 향수 카드 = 병에 붙는 라벨 스티커 */
+.card{background:var(--paper);border:1px solid var(--ink);outline:1px solid var(--ink);outline-offset:-6px;padding:22px 22px 18px;min-height:230px}
+.card:hover{border-color:var(--teal-deep);outline-color:var(--teal-deep)}
+.card .heart{top:14px;right:14px}
+.lbl-top{display:flex;justify-content:space-between;gap:8px;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding-bottom:8px;border-bottom:1px dashed var(--line);margin-bottom:6px}
+.card .lbl-top{padding-right:26px}
+.card .nm{font-family:var(--type);font-weight:700;font-size:22px;text-transform:uppercase;letter-spacing:.04em;line-height:1.15}
+.card .ko{font-size:12.5px}
+.lbl-rule{display:block;height:0;border-top:1px solid var(--ink);width:36px;margin:4px 0}
+.card .notes{font-size:12.5px;line-height:1.6}
+.card .meta{border-top:1px dashed var(--line);padding-top:10px}
+.chip{border-color:var(--ink);color:var(--ink)}
+
+/* 상세 화면 이름표 */
+.sticker{background:var(--paper);border:1px solid var(--ink);outline:1px solid var(--ink);outline-offset:-7px;padding:26px 28px;display:grid;gap:6px}
+.sticker h2{font-family:var(--type);font-weight:700;text-transform:uppercase;letter-spacing:.03em;font-size:clamp(28px,4.4vw,40px);line-height:1.1;margin:4px 0 0}
+.sticker .ko{font-size:14px;color:var(--muted)}
+.dhead .sub{margin-top:16px}
+
+/* 리뷰 카드·뉴스레터 카드도 라벨처럼 */
+.rcard,.issue{background:var(--paper);border:1px solid var(--ink)}
+.rcard b{font-family:var(--type);text-transform:uppercase;letter-spacing:.04em;font-weight:700}
+.post{background:var(--paper);border-color:var(--ink)}

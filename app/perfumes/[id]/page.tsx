@@ -2,7 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getViewer } from "@/lib/auth";
 import type { CuratorReview, Perfume, Quote } from "@/lib/types";
-import { ago, fmtDate, isNew, stars } from "@/lib/utils";
+import { ago, concFull, fmtDate, isNew, labelNo, stars } from "@/lib/utils";
 import FamDot from "@/components/FamDot";
 import { ToggleButton, WearTodayButton } from "@/components/ToggleButtons";
 import { QuoteComposer, DeleteQuoteButton } from "@/components/QuoteComposer";
@@ -37,10 +37,12 @@ export default async function PerfumePage({ params }: { params: Promise<{ id: st
   const { data: p } = await supabase.from("perfumes").select("*").eq("id", id).maybeSingle();
   if (!p) notFound();
   const perfume = p as Perfume;
-  const [{ data: review }, { data: quotes }] = await Promise.all([
+  const [{ data: review }, { data: quotes }, { data: order }] = await Promise.all([
     supabase.from("curator_reviews").select("*").eq("perfume_id", id).maybeSingle(),
     supabase.from("quotes").select("*, profiles(display_name)").eq("perfume_id", id).order("created_at", { ascending: false }),
+    supabase.from("perfumes").select("id, created_at").order("created_at").order("id"),
   ]);
+  const no = (order ?? []).findIndex((o) => o.id === id) + 1;
   let wished = false, owned = false, wornDays: string[] = [];
   if (user) {
     const [w, c, logs] = await Promise.all([
@@ -64,9 +66,12 @@ export default async function PerfumePage({ params }: { params: Promise<{ id: st
       <Link className="btn ghost back" href="/perfumes">← 전체 향수</Link>
       <div className="detail">
         <section className="dhead">
-          <div className="bn">{perfume.brand}{perfume.brand_ko ? ` · ${perfume.brand_ko}` : ""}</div>
-          <h2>{perfume.name}</h2>
-          {perfume.name_ko && <div className="ko" style={{ marginTop: 6 }}>{perfume.name_ko}</div>}
+          <div className="sticker">
+            <div className="lbl-top"><span>{labelNo(no)}</span><span>{concFull(perfume.conc)}{perfume.year ? ` · ${perfume.year}` : ""}</span></div>
+            <div className="bn">{perfume.brand}{perfume.brand_ko ? ` · ${perfume.brand_ko}` : ""}</div>
+            <h2>{perfume.name}</h2>
+            {perfume.name_ko && <div className="ko">{perfume.name_ko}</div>}
+          </div>
           <div className="sub">
             {isNew(perfume) && <span className="new">NEW</span>}
             <FamDot family={perfume.family} />

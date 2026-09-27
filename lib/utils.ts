@@ -63,3 +63,9 @@ export const FALLBACK_PHOTOS = [
   U("1615160460366-2c9a41771b51"),
   U("1458538977777-0549b2370168"),
 ];
+
+/** 라벨에 찍는 부향률 전체 이름 */
+export const concFull = (c: string) =>
+  ({ EDP: "Eau de Parfum", EDT: "Eau de Toilette", Parfum: "Parfum", Cologne: "Eau de Cologne" } as Record<string, string>)[c] ?? c;
+/** 라벨 일련번호 (N° 07) */
+export const labelNo = (n: number | undefined) => (n ? `N° ${String(n).padStart(2, "0")}` : "N° —");

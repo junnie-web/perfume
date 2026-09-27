@@ -24,6 +24,10 @@ export default async function PerfumesPage({ searchParams }: { searchParams: Pro
   }
   const ratings = Object.fromEntries((reviews ?? []).map((r) => [r.perfume_id, r.rating]));
   const pendingCount = reqs?.length ?? 0;
+  // 라벨 일련번호: 등록된 순서대로 N° 01, 02 …
+  const numbers = Object.fromEntries(
+    [...(perfumes ?? [])].sort((a, b) => a.created_at.localeCompare(b.created_at) || a.id.localeCompare(b.id)).map((p, i) => [p.id, i + 1])
+  );
   return (
     <>
       {isAdmin && (
@@ -40,6 +44,7 @@ export default async function PerfumesPage({ searchParams }: { searchParams: Pro
         owned={owned}
         loggedIn={!!user}
         pendingRequests={(reqs ?? []) as any}
+        numbers={numbers}
         brand={brand}
         onlyNew={filter === "new"}
       />
