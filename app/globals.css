@@ -626,3 +626,9 @@ input[type=text],input[type=email],input[type=password],textarea,select{border-r
 .hero>img,.slide img{filter:saturate(.7) contrast(.96) brightness(1.03)}
 .hero::after{background:linear-gradient(180deg,rgba(33,43,42,0) 30%,rgba(33,43,42,.55) 100%)}
 .slide::after{background:linear-gradient(90deg,rgba(33,43,42,.62) 0%,rgba(33,43,42,.24) 55%,rgba(33,43,42,0) 100%)}
+
+/* ============ v14: 로고(타자기)와 메뉴 글꼴 구분 ============ */
+/* 로고 PARFUMOIR만 타자기 글꼴, 메뉴는 깔끔한 Pretendard 대문자 */
+.nav-link.nav-home,.nav-group>.nav-head{font-family:var(--sans)}
+.nav-link.nav-home{font-size:17px;font-weight:700;letter-spacing:.12em}
+.nav-group>.nav-head{font-size:13.5px;font-weight:700;letter-spacing:.14em}
