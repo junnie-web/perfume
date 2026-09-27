@@ -68,14 +68,14 @@ export default function SideNav({ brands, pending, newCount, user }: Props) {
     }
     return p === "/" ? path === "/" : path.startsWith(p);
   };
-  const L = ({ href, children, sub }: { href: string; children: React.ReactNode; sub?: boolean }) => (
-    <Link href={href} className={`nav-link ${sub ? "sub" : ""}`} aria-current={is(href) ? "page" : undefined}>{children}</Link>
+  const L = ({ href, children, sub, cls }: { href: string; children: React.ReactNode; sub?: boolean; cls?: string }) => (
+    <Link href={href} className={`nav-link ${sub ? "sub" : ""} ${cls ?? ""}`} aria-current={is(href) ? "page" : undefined}>{children}</Link>
   );
   const t = (k: keyof typeof open) => () => setOpen((o) => ({ ...o, [k]: !o[k] }));
 
   const menu = (
     <nav className="nav" aria-label="사이트 메뉴">
-      <L href="/">홈</L>
+      <L href="/" cls="nav-home">홈</L>
       <Group label="향수" open={open.perfume} onToggle={t("perfume")}>
         <L href="/perfumes">전체 향수</L>
         <L href="/perfumes?filter=new">신제품 {newCount > 0 && <span className="nav-new">NEW {newCount}</span>}</L>

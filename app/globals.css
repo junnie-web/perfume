@@ -562,3 +562,17 @@ input[type=text],input[type=email],input[type=password],textarea,select{border-r
   .burger span{background:var(--ink)}
 }
 /* 청록이 남는 곳: 버튼, 선택 표시, NEW, 요청판·AI 추천 면 */
+
+/* ============ v10: 쿨 아이보리 + 메뉴 글씨 위계 ============ */
+:root{
+  --ivory:#F5F7F4; --bg:#F5F7F4; --surface:#FBFCFA; --sunk:#ECF0EC; --line:#DCE3DE;
+  --ink:#212B2A; --muted:#63706D; --accent-soft:#E4F0EE;
+}
+/* 홈 > 상위 항목 > 하위 항목 > 브랜드 목록 순으로 크기 */
+.nav-link.nav-home{font-size:19px;font-weight:700;letter-spacing:-.01em;padding-block:10px;margin-bottom:6px}
+.nav-group>.nav-head{font-size:15.5px;font-weight:600;letter-spacing:-.01em;text-transform:none;color:var(--ink);margin-top:10px;padding-block:9px}
+.nav-group>.nav-head:hover{color:var(--teal-deep)}
+.nav-group>.nav-body>.nav-link,.nav-group>.nav-body>.nav-head.sub{font-size:13.5px;font-weight:500;color:var(--muted);padding-block:7px;padding-left:14px}
+.nav-group>.nav-body>.nav-link:hover,.nav-group>.nav-body>.nav-head.sub:hover{color:var(--ink)}
+.nav-body .nav-body .nav-link.sub{font-size:12.5px;padding-block:5px}
+.nav-link[aria-current="page"]{color:var(--teal-deep)!important;font-weight:600}
