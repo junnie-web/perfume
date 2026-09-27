@@ -45,7 +45,7 @@ export default async function RequestsPage() {
       <div className="scoreboard">
         <div><span className="eyebrow">대기 중인 요청</span><span><span className="big">{pend.length}</span><span className="unit">건</span></span></div>
         <div><span className="eyebrow">누적 요청 수</span><span><span className="big">{totalVotes}</span><span className="unit">표</span></span></div>
-        <div><span className="eyebrow">최근 30일 신향</span><span><span className="big">{newOnes.length}</span><span className="unit">병</span></span></div>
+        <div><span className="eyebrow">최근 30일 신제품</span><span><span className="big">{newOnes.length}</span><span className="unit">병</span></span></div>
       </div>
       <div className="reqw">
         <section>
@@ -66,7 +66,7 @@ export default async function RequestsPage() {
             <RequestForm loggedIn={!!user} />
           </div>
           <div className="panel">
-            <div className="sec-h" style={{ margin: 0 }}><h3>신향 입고</h3><span className="mono muted">최근 등록</span></div>
+            <div className="sec-h" style={{ margin: 0 }}><h3>신제품 입고</h3><span className="mono muted">최근 등록</span></div>
             {newOnes.length ? (
               <div className="list">
                 {newOnes.map((p) => (

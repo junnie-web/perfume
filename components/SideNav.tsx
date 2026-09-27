@@ -78,7 +78,7 @@ export default function SideNav({ brands, pending, newCount, user }: Props) {
       <L href="/">홈</L>
       <Group label="향수" open={open.perfume} onToggle={t("perfume")}>
         <L href="/perfumes">전체 향수</L>
-        <L href="/perfumes?filter=new">신향 {newCount > 0 && <span className="nav-new">NEW {newCount}</span>}</L>
+        <L href="/perfumes?filter=new">신제품 {newCount > 0 && <span className="nav-new">NEW {newCount}</span>}</L>
         <button className="nav-head sub" aria-expanded={open.brands} onClick={t("brands")}>
           <span>브랜드</span><Chevron open={open.brands} />
         </button>
@@ -96,7 +96,7 @@ export default function SideNav({ brands, pending, newCount, user }: Props) {
         <L href="/calendar">향뿌캘린더</L>
       </Group>
       <Group label="커뮤니티" open={open.community} onToggle={t("community")}>
-        <L href="/requests">신향 요청 {pending > 0 && <span className="nav-badge">{pending}</span>}</L>
+        <L href="/requests">신제품 요청 {pending > 0 && <span className="nav-badge">{pending}</span>}</L>
         <L href="/newsletter">뉴스레터</L>
       </Group>
       <div className="nav-account">

@@ -1,8 +1,9 @@
 :root{
   color-scheme:light;
-  --teal:#3A9D9A; --teal-deep:#2C7F7C; --ivory:#FBF8EF;
-  --bg:#FBF8EF; --surface:#FFFDF7; --sunk:#F2EDDF; --ink:#1E2B2A; --muted:#5E6E6B; --line:#E4DCC8;
-  --accent:#3A9D9A; --accent-ink:#FFFFFF; --accent-soft:#E2F1EF; --amber:#B7862A; --danger:#B4473F;
+  /* 파스텔 청록 + 밝은 아이보리 (채도 낮춤) */
+  --teal:#B5DAD6; --teal-mid:#94C6C1; --teal-deep:#3F7773; --teal-ink:#1D3533; --ivory:#FBF8F0;
+  --bg:#FBF8F0; --surface:#FFFDF8; --sunk:#F1EDE2; --ink:#253331; --muted:#66746F; --line:#E6DFCF;
+  --accent:#5E9C98; --accent-ink:#FFFFFF; --accent-soft:#E6F2F0; --amber:#C29A4E; --danger:#B4574F;
   --serif:"Gowun Batang","Nanum Myeongjo","AppleMyungjo",serif;
   --latin:"Italiana","Gowun Batang",Georgia,serif;
   --sans:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
@@ -391,51 +392,68 @@ footer.site{margin-top:64px;padding-top:18px;border-top:1px solid var(--line);fo
 /* 접힌 메뉴는 확실히 숨겨요 (.nav-body의 display:flex가 hidden을 덮어쓰지 않게) */
 [hidden]{display:none!important}
 
-/* ============ v5: 청록 #3A9D9A + 밝은 아이보리 ============ */
+/* ============ v6: 파스텔 청록 + 밝은 아이보리 ============ */
 body{background:var(--bg)}
-.btn.primary{background:var(--teal);border-color:var(--teal);color:#fff;font-weight:600}
-.btn.primary:hover{background:var(--teal-deep);border-color:var(--teal-deep);filter:none}
-a{color:inherit}
+.btn.primary{background:var(--teal-mid);border-color:var(--teal-mid);color:var(--teal-ink);font-weight:600}
+.btn.primary:hover{background:#86BCB7;border-color:#86BCB7;filter:none}
 .linkish{color:var(--teal-deep)}
 
-/* 왼쪽 메뉴: 청록 배경 + 아이보리 글씨 */
-.sidenav{background:var(--teal);border-right:0;color:var(--ivory)}
-.side-brand{color:var(--ivory)}
-.side-brand .brandsub{color:rgba(251,248,239,.8)}
-.sidenav .close{color:var(--ivory)}
-.nav-link,.nav-head.sub{color:var(--ivory);font-size:15px;font-weight:500}
-.nav-head{color:rgba(251,248,239,.78)}
-.nav-head:hover{color:#fff}
-.nav-link.sub{color:rgba(251,248,239,.86);font-size:14px}
-.nav-link:hover{background:rgba(255,255,255,.12)}
-.nav-link[aria-current="page"]{color:#fff;font-weight:700;background:rgba(255,255,255,.18);box-shadow:inset 3px 0 0 var(--ivory)}
-.nav-link.as-btn{color:rgba(251,248,239,.86)}
-.nav-count{color:rgba(251,248,239,.7)}
+/* 왼쪽 메뉴: 파스텔 청록 배경 + 진한 글씨 */
+.sidenav{background:var(--teal);border-right:0;color:var(--teal-ink)}
+.side-brand{color:var(--teal-ink)}
+.side-brand .brandsub{color:rgba(29,53,51,.72)}
+.sidenav .close{color:var(--teal-ink)}
+.nav-link,.nav-head.sub{color:var(--teal-ink);font-size:15px;font-weight:500}
+.nav-head{color:rgba(29,53,51,.62)}
+.nav-head:hover{color:var(--teal-ink)}
+.nav-link.sub{color:rgba(29,53,51,.82);font-size:14px}
+.nav-link:hover{background:rgba(255,255,255,.35)}
+.nav-link[aria-current="page"]{color:var(--teal-ink);font-weight:700;background:rgba(255,253,248,.62);box-shadow:inset 3px 0 0 var(--teal-deep)}
+.nav-link.as-btn{color:rgba(29,53,51,.8)}
+.nav-count{color:rgba(29,53,51,.55)}
 .nav-badge,.nav-new{background:var(--ivory);color:var(--teal-deep);font-weight:600}
-.nav-body .nav-body{border-left-color:rgba(255,255,255,.3)}
-.nav-account{border-top-color:rgba(255,255,255,.28)}
+.nav-body .nav-body{border-left-color:rgba(29,53,51,.18)}
+.nav-account{border-top-color:rgba(29,53,51,.16)}
 .sidenav .btn.primary{background:var(--ivory);border-color:var(--ivory);color:var(--teal-deep)}
 .sidenav .btn.primary:hover{background:#fff}
-.sidenav :focus-visible{outline-color:var(--ivory)}
+.sidenav :focus-visible{outline-color:var(--teal-deep)}
 
 /* 폰·세로 화면 위쪽 바 */
 @media (max-width:960px){
   .mtop{background:var(--teal);border-bottom:0}
-  .mbrand{color:var(--ivory)}
-  .burger span{background:var(--ivory)}
+  .mbrand{color:var(--teal-ink)}
+  .burger span{background:var(--teal-ink)}
 }
 
 /* 강조 요소 */
-.hero{background:var(--teal-deep)}
+.hero{background:var(--teal-mid)}
+.hero::after{background:linear-gradient(180deg,rgba(29,53,51,0) 35%,rgba(29,53,51,.62) 100%)}
+.slide::after{background:linear-gradient(90deg,rgba(29,53,51,.66) 0%,rgba(29,53,51,.28) 55%,rgba(29,53,51,0) 100%)}
 .dots button[aria-selected="true"]{background:var(--ivory)}
 .stars{color:var(--amber)}
-.ai{background:var(--teal-deep);color:var(--ivory);--muted:rgba(251,248,239,.78)}
-.ai .btn{color:var(--ivory);border-color:rgba(251,248,239,.5)}
+.ai{background:var(--teal);color:var(--teal-ink);--muted:rgba(29,53,51,.72)}
+.ai .btn{color:var(--teal-ink);border-color:rgba(29,53,51,.3);background:transparent}
 .ai .btn.primary{background:var(--ivory);border-color:var(--ivory);color:var(--teal-deep)}
-.rec{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.18)}
-.rec .no{color:var(--ivory)}
-.taste{border-left-color:var(--ivory)}
-.scoreboard{background:var(--teal-deep)}
-.scoreboard .big{color:var(--ivory)}
-.new{background:var(--teal);color:#fff}
+.rec{background:rgba(255,253,248,.55);border-color:rgba(29,53,51,.12);color:var(--teal-ink)}
+.rec:hover{border-color:var(--teal-deep)}
+.rec .no{color:var(--teal-deep)}
+.taste{border-left-color:var(--teal-deep)}
+.mist{background:var(--teal-deep)}
+.scoreboard{background:var(--teal);color:var(--teal-ink)}
+.scoreboard>div{border-right-color:rgba(29,53,51,.14)}
+.scoreboard .eyebrow,.scoreboard .unit{color:rgba(29,53,51,.66)}
+.scoreboard .big{color:var(--teal-ink)}
+.new{background:var(--teal-mid);color:var(--teal-ink)}
+.own{border-color:var(--teal-deep);color:var(--teal-deep)}
 .hotn{color:var(--teal-deep)}
+.count.hot{background:var(--teal-mid);color:var(--teal-ink)}
+.vbar i,.stat .bar i,.meter .bars i.f{background:var(--teal-mid)}
+.req .rank,.issue .vol,.reader .vol{color:var(--teal-deep)}
+.btn.on{background:var(--accent-soft);border-color:var(--teal-mid);color:var(--teal-deep)}
+.heart.on{color:var(--teal-deep)}
+.owner{background:var(--accent-soft);border-color:var(--teal-mid)}
+.composer{border-color:var(--teal-mid)}
+.subbox.on{background:var(--accent-soft);border-color:var(--teal-mid)}
+.notice{background:var(--accent-soft);border-color:var(--teal-mid)}
+.av{background:var(--teal-mid);color:var(--teal-ink)}
+:focus-visible{outline-color:var(--teal-deep)}

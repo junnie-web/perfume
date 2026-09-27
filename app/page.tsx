@@ -17,7 +17,7 @@ export default async function Home() {
     supabase.from("curator_reviews").select("*, perfumes(id, name, brand)").order("updated_at", { ascending: false }).limit(3),
   ]);
 
-  // 새소식 슬라이드: 관리자가 올린 배너 + 자동 소식(최신 뉴스레터, 신향, 요청 1위)
+  // 새소식 슬라이드: 관리자가 올린 배너 + 자동 소식(최신 뉴스레터, 신제품, 요청 1위)
   let photo = 0;
   const nextPhoto = () => FALLBACK_PHOTOS[photo++ % FALLBACK_PHOTOS.length];
   const slides: Slide[] = ((banners ?? []) as Banner[]).map((b) => ({
@@ -31,7 +31,7 @@ export default async function Home() {
     slides.push({ id: `nl-${n.id}`, eyebrow: `Parfumoir Letter · Vol.${vol2(n.vol)}`, title: n.title, text: n.body.split("\n")[0].slice(0, 70), href: `/newsletter/${n.vol}`, image: nextPhoto() });
   }
   if (topReq && topReq.votes > 0) {
-    slides.push({ id: `req-${topReq.id}`, eyebrow: "신향 요청 1위", title: `${topReq.brand} ${topReq.name}`, text: `${topReq.votes}명이 기다리고 있어요. 함께 요청해 주세요.`, href: "/requests", image: nextPhoto() });
+    slides.push({ id: `req-${topReq.id}`, eyebrow: "신제품 요청 1위", title: `${topReq.brand} ${topReq.name}`, text: `${topReq.votes}명이 기다리고 있어요. 함께 요청해 주세요.`, href: "/requests", image: nextPhoto() });
   }
 
   return (

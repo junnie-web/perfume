@@ -125,7 +125,7 @@ export async function deleteQuote(quoteId: string, perfumeId: string): Promise<A
   return { ok: true };
 }
 
-/* ---------- 신향 요청 ---------- */
+/* ---------- 신제품 요청 ---------- */
 
 export async function createRequest(brand: string, name: string): Promise<ActionResult> {
   const { supabase, user } = await requireUser();

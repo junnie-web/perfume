@@ -39,7 +39,7 @@ export default function Shelf({ perfumes, ratings, wished, owned, loggedIn, pend
       <div className="shelf-head">
         <div>
           <div className="eyebrow">{brand ? "Brand" : onlyNew ? "New arrivals" : "All perfumes"}</div>
-          <h2>{brand || (onlyNew ? "신향" : "전체 향수")}</h2>
+          <h2>{brand || (onlyNew ? "신제품" : "전체 향수")}</h2>
         </div>
         <span className="mono muted">{list.length}개</span>
       </div>

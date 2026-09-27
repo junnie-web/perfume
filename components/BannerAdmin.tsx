@@ -58,7 +58,7 @@ export function BannerList({ banners }: { banners: Banner[] }) {
   const [confirm, setConfirm] = useState("");
   const router = useRouter();
   const run = (fn: () => Promise<unknown>) => start(async () => { await fn(); setConfirm(""); router.refresh(); });
-  if (!banners.length) return <p className="muted" style={{ margin: 0, fontSize: 13 }}>직접 올린 배너가 아직 없어요. 신향·뉴스레터·요청 1위 소식은 자동으로 슬라이드에 나와요.</p>;
+  if (!banners.length) return <p className="muted" style={{ margin: 0, fontSize: 13 }}>직접 올린 배너가 아직 없어요. 신제품·뉴스레터·요청 1위 소식은 자동으로 슬라이드에 나와요.</p>;
   return (
     <div className="list">
       {banners.map((b) => (
