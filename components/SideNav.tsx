@@ -93,7 +93,7 @@ export default function SideNav({ brands, pending, newCount, user }: Props) {
       <Group label="My Scents" open={open.mine} onToggle={t("mine")}>
         <L href="/collection">Collection</L>
         <L href="/wishlist">Wishlist</L>
-        <L href="/calendar">Scent Diary</L>
+        <L href="/calendar">Scent Calendar</L>
       </Group>
       <Group label="Community" open={open.community} onToggle={t("community")}>
         <L href="/requests">Requests {pending > 0 && <span className="nav-badge">{pending}</span>}</L>
