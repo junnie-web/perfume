@@ -3,10 +3,10 @@
 const env = process.env;
 
 export function supabaseUrl(): string {
-  return env["SUPABASE_URL"] || env["NEXT_PUBLIC_SUPABASE_URL"] || "";
+  return (env["SUPABASE_URL"] || env["NEXT_PUBLIC_SUPABASE_URL"] || "").trim().replace(/\/+$/, "");
 }
 export function supabaseAnonKey(): string {
-  return env["SUPABASE_ANON_KEY"] || env["NEXT_PUBLIC_SUPABASE_ANON_KEY"] || "";
+  return (env["SUPABASE_ANON_KEY"] || env["NEXT_PUBLIC_SUPABASE_ANON_KEY"] || "").trim();
 }
 export function assertSupabaseEnv() {
   if (!supabaseUrl() || !supabaseAnonKey())
