@@ -397,3 +397,6 @@ footer.site{margin-top:64px;padding-top:18px;border-top:1px solid var(--line);fo
 .admin-thumb{width:64px;height:64px;object-fit:cover;border-radius:8px;border:1px solid var(--line);max-width:none}
 .admin-thumb.wide{width:100%;height:180px}
 .empty-thumb{display:grid;place-items:center;font-size:10px;color:var(--muted);background:var(--sunk)}
+
+/* 접힌 메뉴는 확실히 숨겨요 (.nav-body의 display:flex가 hidden을 덮어쓰지 않게) */
+[hidden]{display:none!important}
