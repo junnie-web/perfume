@@ -37,6 +37,7 @@
    - 이 저장소의 `supabase/schema.sql` 파일을 GitHub에서 열고, 오른쪽 위 **복사 아이콘(Copy raw file)** 으로 내용을 복사해요.
    - SQL Editor 빈칸에 붙여넣고 오른쪽 아래 **Run**을 눌러요. "Success"가 나오면 돼요.
    - 새 쿼리 탭(**+**)을 열고 `supabase/seed.sql`도 똑같이 복사 → 붙여넣기 → **Run** 해요. (샘플 향수 17종과 예시 리뷰·뉴스레터가 들어가요)
+   - 마지막으로 `supabase/migration-002-banners.sql`도 같은 방법으로 **Run** 해요. (메인 화면 배너·사진 기능)
 4. 왼쪽 메뉴 **Project Settings**(톱니바퀴) → **API**에서 아래 세 가지를 메모장에 복사해요.
    - **Project URL** → `NEXT_PUBLIC_SUPABASE_URL`
    - **anon public** 키 → `NEXT_PUBLIC_SUPABASE_ANON_KEY`

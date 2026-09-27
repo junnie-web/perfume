@@ -61,7 +61,7 @@ export default async function PerfumePage({ params }: { params: Promise<{ id: st
 
   return (
     <>
-      <Link className="btn ghost back" href="/">← 전체 향수</Link>
+      <Link className="btn ghost back" href="/perfumes">← 전체 향수</Link>
       <div className="detail">
         <section className="dhead">
           <div className="bn">{perfume.brand}{perfume.brand_ko ? ` · ${perfume.brand_ko}` : ""}</div>

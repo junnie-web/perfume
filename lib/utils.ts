@@ -52,3 +52,14 @@ export function ago(v: string) {
 export const splitList = (s: string) =>
   s.split(/[,，]/).map((x) => x.trim()).filter(Boolean);
 export const vol2 = (n: number) => String(n).padStart(2, "0");
+
+/** 기본 감성 사진 (Unsplash 무료 사진). 관리 화면에서 내 사진으로 바꿀 수 있어요. */
+const U = (id: string, w = 1600) => `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}&q=80`;
+export const DEFAULT_HERO = U("1595425959632-34f2822322ce", 2000);
+export const FALLBACK_PHOTOS = [
+  U("1588405748880-12d1d2a59f75"),
+  U("1594125311687-3b1b3eafa9f4"),
+  U("1543422655-ac1c6ca993ed"),
+  U("1615160460366-2c9a41771b51"),
+  U("1458538977777-0549b2370168"),
+];

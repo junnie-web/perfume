@@ -34,7 +34,7 @@ export default async function CollectionPage({ searchParams }: { searchParams: P
         <div className="empty">
           갖고 있는 향수를 모아 두는 곳이에요.<br />
           향수 페이지에서 <b>갖고 있어요</b>를 누르거나, 위시리스트에서 <b>샀어요</b>를 누르면 여기로 옮겨져요.<br /><br />
-          <Link className="btn primary" href="/">향수 둘러보기</Link>
+          <Link className="btn primary" href="/perfumes">향수 둘러보기</Link>
         </div>
       </>
     );

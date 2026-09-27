@@ -13,17 +13,19 @@ type Props = {
   owned: string[];
   loggedIn: boolean;
   pendingRequests: { id: string; brand: string; name: string; votes: number }[];
+  brand: string;
+  onlyNew: boolean;
 };
 
-export default function Shelf({ perfumes, ratings, wished, owned, loggedIn, pendingRequests }: Props) {
-  const [brand, setBrand] = useState("all");
+export default function Shelf({ perfumes, ratings, wished, owned, loggedIn, pendingRequests, brand, onlyNew }: Props) {
   const [q, setQ] = useState("");
   const wishSet = useMemo(() => new Set(wished), [wished]);
   const ownSet = useMemo(() => new Set(owned), [owned]);
-  const brands = useMemo(() => [...new Set(perfumes.map((p) => p.brand))].sort(), [perfumes]);
   const nq = norm(q);
 
-  let list = brand === "all" ? perfumes : perfumes.filter((p) => p.brand === brand);
+  let list = perfumes;
+  if (brand) list = list.filter((p) => p.brand === brand);
+  if (onlyNew) list = list.filter(isNew);
   if (nq) {
     list = perfumes.filter((p) =>
       norm([p.brand, p.brand_ko, p.name, p.name_ko, p.family, ...notesOf(p)].join(" ")).includes(nq)
@@ -33,17 +35,14 @@ export default function Shelf({ perfumes, ratings, wished, owned, loggedIn, pend
   const reqMatches = nq ? pendingRequests.filter((r) => norm(r.brand + r.name).includes(nq)) : [];
 
   return (
-    <div className="shelf">
-      <aside className="brands" aria-label="브랜드">
-        <button aria-pressed={brand === "all" && !nq} onClick={() => { setBrand("all"); setQ(""); }}>
-          전체 <span className="n">{perfumes.length}</span>
-        </button>
-        {brands.map((b) => (
-          <button key={b} aria-pressed={brand === b && !nq} onClick={() => { setBrand(b); setQ(""); }}>
-            {b} <span className="n">{perfumes.filter((p) => p.brand === b).length}</span>
-          </button>
-        ))}
-      </aside>
+    <div>
+      <div className="shelf-head">
+        <div>
+          <div className="eyebrow">{brand ? "Brand" : onlyNew ? "New arrivals" : "All perfumes"}</div>
+          <h2>{brand || (onlyNew ? "신향" : "전체 향수")}</h2>
+        </div>
+        <span className="mono muted">{list.length}개</span>
+      </div>
       <section>
         <div className="search">
           <input
@@ -81,6 +80,9 @@ export default function Shelf({ perfumes, ratings, wished, owned, loggedIn, pend
           </p>
         )}
 
+        {!nq && list.length === 0 && (
+          <div className="empty">{onlyNew ? "최근 30일 안에 새로 들어온 향수가 아직 없어요." : "아직 등록된 향수가 없어요."}</div>
+        )}
         <div className="grid">
           {list.map((p) => (
             <PerfumeCard key={p.id} p={p} rating={ratings[p.id]} wished={wishSet.has(p.id)} owned={ownSet.has(p.id)} loggedIn={loggedIn} />

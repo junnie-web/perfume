@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { Suspense } from "react";
 import "./globals.css";
 import { getViewer } from "@/lib/auth";
-import NavTabs from "@/components/NavTabs";
+import SideNav from "@/components/SideNav";
+import { NEW_DAYS } from "@/lib/utils";
 
 export const dynamic = "force-dynamic";
 
@@ -13,10 +14,18 @@ export const metadata: Metadata = {
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const { supabase, user, profile, isAdmin } = await getViewer();
-  const { count: pending } = await supabase
-    .from("requests")
-    .select("id", { count: "exact", head: true })
-    .eq("status", "pending");
+  const since = new Date(Date.now() - NEW_DAYS * 864e5).toISOString();
+  const [{ count: pending }, { data: perfumes }] = await Promise.all([
+    supabase.from("requests").select("id", { count: "exact", head: true }).eq("status", "pending"),
+    supabase.from("perfumes").select("brand, created_at"),
+  ]);
+  const counts: Record<string, number> = {};
+  let newCount = 0;
+  for (const p of perfumes ?? []) {
+    counts[p.brand] = (counts[p.brand] ?? 0) + 1;
+    if (p.created_at > since) newCount++;
+  }
+  const brands = Object.entries(counts).sort((a, b) => a[0].localeCompare(b[0])).map(([brand, count]) => ({ brand, count }));
 
   return (
     <html lang="ko">
@@ -29,31 +38,19 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         />
       </head>
       <body>
-        <div className="wrap">
-          <header>
-            <div className="top">
-              <Link href="/" className="mark" style={{ textDecoration: "none" }}>
-                <h1 className="brandmark">Parfumoir</h1>
-                <span className="brandsub">파퓨무아 · 향의 회고록</span>
-              </Link>
-              <div className="nav-right">
-                {user ? (
-                  <>
-                    <Link className="userchip" href="/me">{profile?.display_name ?? "내 정보"}</Link>
-                    {isAdmin && <Link className="btn" href="/admin">관리</Link>}
-                    <form action="/auth/signout" method="post">
-                      <button className="btn ghost" type="submit">로그아웃</button>
-                    </form>
-                  </>
-                ) : (
-                  <Link className="btn primary" href="/login">로그인</Link>
-                )}
-              </div>
-            </div>
-            <NavTabs pending={pending ?? 0} />
-          </header>
-          <main>{children}</main>
-          <footer className="site">Parfumoir · 향의 회고록</footer>
+        <div className="shell">
+          <Suspense fallback={<aside className="sidenav" />}>
+            <SideNav
+              brands={brands}
+              pending={pending ?? 0}
+              newCount={newCount}
+              user={user ? { name: profile?.display_name ?? "내 정보", isAdmin } : null}
+            />
+          </Suspense>
+          <div className="content">
+            <main>{children}</main>
+            <footer className="site">Parfumoir · 향의 회고록</footer>
+          </div>
         </div>
       </body>
     </html>

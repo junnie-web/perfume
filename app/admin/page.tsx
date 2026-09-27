@@ -2,8 +2,9 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { getViewer } from "@/lib/auth";
 import { createAdminClient } from "@/lib/supabase/admin";
-import type { Newsletter } from "@/lib/types";
-import { fmtDate, vol2 } from "@/lib/utils";
+import type { Banner, Newsletter } from "@/lib/types";
+import { DEFAULT_HERO, fmtDate, vol2 } from "@/lib/utils";
+import { BannerForm, BannerList, HeroForm } from "@/components/BannerAdmin";
 import AddPerfumeForm from "@/components/AddPerfumeForm";
 import NewsletterComposer from "@/components/NewsletterComposer";
 
@@ -17,10 +18,12 @@ export default async function AdminPage({ searchParams }: { searchParams: Promis
     return <div className="center-card"><h2>관리자 전용</h2><p className="muted" style={{ margin: 0 }}>관리자로 지정된 계정만 볼 수 있어요.</p></div>;
 
   const admin = createAdminClient();
-  const [{ data: letters }, { data: subs }, { count: pending }] = await Promise.all([
+  const [{ data: letters }, { data: subs }, { count: pending }, { data: banners }, { data: hero }] = await Promise.all([
     supabase.from("newsletters").select("*").order("vol", { ascending: false }),
     admin.from("subscribers").select("email, confirmed, created_at, unsubscribed_at").order("created_at", { ascending: false }),
     supabase.from("requests").select("id", { count: "exact", head: true }).eq("status", "pending"),
+    supabase.from("banners").select("*").order("sort").order("created_at", { ascending: false }),
+    supabase.from("site_settings").select("value").eq("key", "hero_image").maybeSingle(),
   ]);
   const active = (subs ?? []).filter((s) => s.confirmed && !s.unsubscribed_at);
   const waiting = (subs ?? []).filter((s) => !s.confirmed && !s.unsubscribed_at);
@@ -30,6 +33,15 @@ export default async function AdminPage({ searchParams }: { searchParams: Promis
       <div className="sec-h"><h2 style={{ fontFamily: "var(--serif)" }}>관리</h2>
         <Link className="btn ghost" href="/requests">추가 요청 {pending ?? 0}건 보기 →</Link>
       </div>
+
+      <section className="adminsec" id="home">
+        <h2>메인 화면</h2>
+        <h3 style={{ fontFamily: "var(--serif)", margin: 0 }}>메인 사진</h3>
+        <HeroForm current={hero?.value || DEFAULT_HERO} isDefault={!hero?.value} />
+        <h3 style={{ fontFamily: "var(--serif)", margin: 0 }}>새소식 배너</h3>
+        <BannerForm />
+        <BannerList banners={(banners ?? []) as Banner[]} />
+      </section>
 
       <section className="adminsec" id="perfume">
         <h2>새 향수 등록</h2>

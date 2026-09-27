@@ -57,3 +57,17 @@ export type Newsletter = {
   sent_at: string | null;
   sent_count: number | null;
 };
+
+export type Banner = {
+  id: string;
+  eyebrow: string | null;
+  title: string;
+  body: string | null;
+  link: string | null;
+  image_url: string | null;
+  active: boolean;
+  sort: number;
+  created_at: string;
+};
+
+export type Slide = { id: string; eyebrow: string; title: string; text: string; href: string; image: string };
