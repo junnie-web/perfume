@@ -22,6 +22,8 @@ export async function GET() {
     NEXT_PUBLIC_SITE_URL: env["NEXT_PUBLIC_SITE_URL"] ?? "없음",
     ANTHROPIC_API_KEY: has("ANTHROPIC_API_KEY"),
     supabase_url_value: supabaseUrl() || "없음",
+    // 이름에 보이지 않는 글자가 섞였는지 확인용 (값은 안 보여줘요)
+    similar_names: Object.keys(env).filter((k) => /SUPABASE|RESEND|NEWSLETTER|ANTHROPIC|SITE_URL/i.test(k)).map((k) => JSON.stringify(k)),
   };
   try {
     const sb = createClient(supabaseUrl().trim(), supabaseAnonKey().trim());
@@ -30,5 +32,5 @@ export async function GET() {
   } catch (e: any) {
     report.database = `연결 실패: ${e?.message ?? e}`;
   }
-  return NextResponse.json(report, { headers: { "cache-control": "no-store" } });
+  return NextResponse.json(report, { headers: { "cache-control": "no-store", "content-type": "application/json; charset=utf-8" } });
 }
