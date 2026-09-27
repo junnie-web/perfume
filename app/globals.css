@@ -620,3 +620,9 @@ input[type=text],input[type=email],input[type=password],textarea,select{border-r
 .rcard,.issue{background:var(--paper);border:1px solid var(--ink)}
 .rcard b{font-family:var(--type);text-transform:uppercase;letter-spacing:.04em;font-weight:700}
 .post{background:var(--paper);border-color:var(--ink)}
+
+/* ============ v13: 사진 톤을 사이트 색감에 맞추기 ============ */
+/* 채도를 낮추고 살짝 차갑게: 어떤 사진이 들어와도 아이보리·민트와 어울리게 */
+.hero>img,.slide img{filter:saturate(.7) contrast(.96) brightness(1.03)}
+.hero::after{background:linear-gradient(180deg,rgba(33,43,42,0) 30%,rgba(33,43,42,.55) 100%)}
+.slide::after{background:linear-gradient(90deg,rgba(33,43,42,.62) 0%,rgba(33,43,42,.24) 55%,rgba(33,43,42,0) 100%)}

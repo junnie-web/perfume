@@ -53,15 +53,20 @@ export const splitList = (s: string) =>
   s.split(/[,，]/).map((x) => x.trim()).filter(Boolean);
 export const vol2 = (n: number) => String(n).padStart(2, "0");
 
-/** 기본 감성 사진 (Unsplash 무료 사진). 관리 화면에서 내 사진으로 바꿀 수 있어요. */
+/**
+ * 기본 사진 (Unsplash 일반 라이선스: 상업적 이용 무료, 출처 표기 의무 없음).
+ * 브랜드가 드러나지 않는 차분한 유리병·말린 식물·그림자 사진만 골랐어요.
+ * 관리 화면에서 직접 찍은 사진으로 바꿀 수 있어요.
+ */
 const U = (id: string, w = 1600) => `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}&q=80`;
-export const DEFAULT_HERO = U("1595425959632-34f2822322ce", 2000);
+export const DEFAULT_HERO = U("1609064672730-1fc9ee166d2f", 2000); // 투명한 유리병에 꽂힌 마른 밀
 export const FALLBACK_PHOTOS = [
-  U("1588405748880-12d1d2a59f75"),
-  U("1594125311687-3b1b3eafa9f4"),
-  U("1543422655-ac1c6ca993ed"),
-  U("1615160460366-2c9a41771b51"),
-  U("1458538977777-0549b2370168"),
+  U("1608571424266-edeb9bbefdec"), // 흰 테이블 위 갈색 유리병
+  U("1591704951890-0862b2e98acb"), // 흰 배경의 투명한 유리병
+  U("1619422305894-dd096b3e6b98"), // 흰 배경의 흰 꽃
+  U("1752520836249-2b8738e12664"), // 거친 벽에 드리운 그림자
+  U("1609064672630-cd07b0c03909"), // 유리 화병의 마른 식물
+  U("1563261883-25b59aad64d8"),     // 투명한 유리 화병
 ];
 
 /** 라벨에 찍는 부향률 전체 이름 */
