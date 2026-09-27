@@ -636,3 +636,10 @@ input[type=text],input[type=email],input[type=password],textarea,select{border-r
 /* ============ v15: 로고를 메뉴보다 크게 ============ */
 .side-brand .brandmark{font-size:26px;letter-spacing:.18em;line-height:1.1}
 .mbrand{font-size:21px;letter-spacing:.16em}
+
+/* ============ v16: 메뉴 글씨 전체를 살짝 작게 (단계별 비율 유지) ============ */
+.nav-link.nav-home{font-size:15px}
+.nav-group>.nav-head{font-size:12.5px}
+.nav-group>.nav-body>.nav-link,.nav-group>.nav-body>.nav-head.sub{font-size:12px;padding-block:6px}
+.nav-body .nav-body .nav-link.sub{font-size:11.5px;padding-block:4px}
+.nav-account .nav-link{font-size:12.5px}
