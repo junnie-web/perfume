@@ -4,6 +4,8 @@ import "./globals.css";
 import { getViewer } from "@/lib/auth";
 import NavTabs from "@/components/NavTabs";
 
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: "향기록",
   description: "브랜드별 향수와 큐레이터 리뷰, 향뿌캘린더, 뉴스레터가 있는 향수 큐레이팅 사이트",

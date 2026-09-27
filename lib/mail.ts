@@ -55,12 +55,13 @@ export async function sendNewsletterEmails(n: Newsletter, subs: { email: string;
   for (let i = 0; i < subs.length; i += 100) {
     const batch = subs.slice(i, i + 100).map((s) => {
       const unsub = `${siteUrl()}/newsletter/unsubscribe?token=${s.token}`;
+      const oneClick = `${siteUrl()}/api/unsubscribe?token=${s.token}`;
       return {
         from: from(),
         to: [s.email],
         subject,
         headers: {
-          "List-Unsubscribe": `<${unsub}>`,
+          "List-Unsubscribe": `<${oneClick}>`,
           "List-Unsubscribe-Post": "List-Unsubscribe=One-Click",
         },
         html: frame(
