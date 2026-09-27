@@ -11,7 +11,9 @@ export async function GET() {
     const v = env[k];
     if (!v) return "없음";
     if (v !== v.trim()) return "있음 (앞뒤에 공백·줄바꿈이 섞여 있어요!)";
-    return `있음 (${v.length}자)`;
+    const dots = v.split(".").length - 1;
+    const jwt = v.startsWith("eyJ") ? (dots === 2 ? ", 3덩어리 정상" : `, ${dots + 1}덩어리 — 잘렸어요! 다시 복사하세요`) : "";
+    return `있음 (${v.length}자${jwt})`;
   };
   const report: Record<string, unknown> = {
     NEXT_PUBLIC_SUPABASE_URL: has("NEXT_PUBLIC_SUPABASE_URL"),
@@ -28,7 +30,7 @@ export async function GET() {
   try {
     const sb = createClient(supabaseUrl().trim(), supabaseAnonKey().trim());
     const { count, error } = await sb.from("perfumes").select("id", { count: "exact", head: true });
-    report.database = error ? `연결 실패: ${error.message}` : `연결 성공 (향수 ${count}개)`;
+    report.database = error ? `연결 실패: ${error.message || error.code || JSON.stringify(error)}` : `연결 성공 (향수 ${count}개)`;
   } catch (e: any) {
     report.database = `연결 실패: ${e?.message ?? e}`;
   }
