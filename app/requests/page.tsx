@@ -61,7 +61,7 @@ export default async function RequestsPage() {
         <aside style={{ display: "grid", gap: 16, alignContent: "start" }}>
           <div className="panel">
             <h3>향수 추가 요청</h3>
-            <p className="muted" style={{ margin: 0, fontSize: 13 }}>노래방 신곡 신청처럼, 같은 향수를 요청한 사람이 많을수록 먼저 등록돼요.</p>
+            <p className="muted" style={{ margin: 0, fontSize: 13 }}>같은 향수를 요청한 사람이 많을수록 먼저 등록돼요.</p>
             <RequestForm loggedIn={!!user} />
           </div>
           <div className="panel">
