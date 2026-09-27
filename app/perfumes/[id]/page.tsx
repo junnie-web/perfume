@@ -111,7 +111,7 @@ export default async function PerfumePage({ params }: { params: Promise<{ id: st
             {r && (
               <>
                 <p className="body">{r.body}</p>
-                <div className="meters"><Meter label="평점" n={r.rating} /><Meter label="지속력" n={r.longevity} /><Meter label="확산력" n={r.sillage} /></div>
+                <div className="meters"><Meter label="지속력" n={r.longevity} /><Meter label="확산력" n={r.sillage} /></div>
               </>
             )}
             <div className="foot">

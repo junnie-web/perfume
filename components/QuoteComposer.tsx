@@ -9,7 +9,7 @@ export function RatingInput({ value, onChange, label }: { value: number; onChang
     <div className="rate" role="group" aria-label={label}>
       <span className="rate-label">{label}</span>
       {[1, 2, 3, 4, 5].map((i) => (
-        <button type="button" key={i} aria-pressed={i === value} onClick={() => onChange(i)}>{i}</button>
+        <button type="button" key={i} className={i <= value ? "f" : ""} aria-pressed={i === value} aria-label={`${i}점`} onClick={() => onChange(i)} />
       ))}
     </div>
   );

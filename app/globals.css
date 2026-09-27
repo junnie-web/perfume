@@ -167,15 +167,18 @@ label.f { display: grid; gap: 6px; font-size: 12.5px; color: var(--muted); }
 .own { font-size: 10px; font-weight: 600; letter-spacing: 0.04em; border: 1px solid var(--mint-deep); color: var(--mint-deep); padding: 0 5px; }
 .hotn { color: var(--mint-deep); }
 
-.rating { display: inline-flex; align-items: baseline; gap: 2px; font-variant-numeric: tabular-nums; }
-.rating b { font-size: 15px; font-weight: 600; }
-.rating span { font-size: 11px; color: var(--faint); }
-.rating.sm b { font-size: 13px; }
+/* 평점: 동그라미 5개, 채워진 것은 포인트 민트 */
+.rating { display: inline-flex; align-items: center; gap: 4px; }
+.rating i { width: 9px; height: 9px; border-radius: 50%; border: 1px solid var(--mint-deep); background: transparent; }
+.rating i.f { background: var(--mint-deep); }
+.rating.sm { gap: 3px; }
+.rating.sm i { width: 7px; height: 7px; }
 
-.rate { display: flex; align-items: center; gap: 4px; flex-wrap: wrap; }
+.rate { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
 .rate-label { font-size: 12.5px; color: var(--muted); margin-right: 6px; }
-.rate button { width: 34px; height: 34px; border: 1px solid var(--line); background: var(--surface); font-size: 13px; font-variant-numeric: tabular-nums; }
-.rate button[aria-pressed="true"] { background: var(--mint); border-color: var(--mint); color: var(--mint-ink); font-weight: 600; }
+.rate button { width: 22px; height: 22px; padding: 0; border-radius: 50%; border: 1.5px solid var(--mint-deep); background: transparent; }
+.rate button.f { background: var(--mint-deep); }
+.rate button:hover { box-shadow: 0 0 0 3px var(--mint-soft); }
 
 .empty { padding: 32px; border: 1px dashed var(--line); color: var(--muted); text-align: center; }
 .notice { padding: 12px 14px; background: var(--mint-soft); border: 1px solid var(--mint); font-size: 14px; margin-bottom: 16px; }
