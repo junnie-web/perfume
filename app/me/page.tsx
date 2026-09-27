@@ -1,6 +1,7 @@
 import { redirect } from "next/navigation";
 import { getViewer } from "@/lib/auth";
 import NameForm from "@/components/NameForm";
+import PasswordForm from "@/components/PasswordForm";
 
 export const dynamic = "force-dynamic";
 
@@ -12,6 +13,7 @@ export default async function MePage() {
       <h2>내 정보</h2>
       <p className="muted" style={{ margin: 0 }}>{user.email}{isAdmin ? " · 관리자" : ""}</p>
       <NameForm current={profile?.display_name ?? ""} />
+      <PasswordForm />
     </div>
   );
 }

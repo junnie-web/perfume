@@ -89,7 +89,8 @@
 
 ## 6. 나를 관리자로 지정하기
 
-1. 내 사이트에서 **로그인** → 내 이메일 입력 → 메일로 온 링크를 눌러 로그인해요.
+1. 내 사이트에서 **로그인 → 회원가입** 탭에서 이메일과 비밀번호로 가입해요.
+   (Supabase **Authentication → Sign In / Providers → Email**에서 **Confirm email**을 꺼 두면 메일 없이 바로 가입돼요.)
 2. Supabase **SQL Editor**에서 아래를 붙여넣고, 이메일만 내 것으로 바꿔 **Run** 해요.
 
    ```sql
@@ -121,7 +122,7 @@
 
 ## 알아 두면 좋은 것
 
-- **로그인 메일 한도**: Supabase 기본 메일은 시간당 몇 통으로 제한돼요. 이용자가 늘면 Supabase **Authentication → Emails → SMTP Settings**에 Resend를 연결하세요 (Host `smtp.resend.com`, Port `465`, User `resend`, Password = Resend API 키).
+- **로그인 방식**: 이메일 + 비밀번호예요. 로그인 메일을 보내지 않아서 Supabase 메일 한도에 걸리지 않아요. 비밀번호는 **내 정보**(오른쪽 위 닉네임)에서 바꿀 수 있어요.
 - **구독자 이메일**은 서버에서만 읽을 수 있고 브라우저로는 절대 전달되지 않아요.
 - **메일마다 개인 구독취소 링크**가 들어가고, Gmail·네이버 메일의 “구독 취소” 버튼도 동작해요.
 - 이 저장소는 공개(Public)예요. 키는 코드에 없고 Vercel 환경 변수에만 있어요. `.env` 파일을 만들어 올리지 마세요.
