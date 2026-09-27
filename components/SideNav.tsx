@@ -75,12 +75,12 @@ export default function SideNav({ brands, pending, newCount, user }: Props) {
 
   const menu = (
     <nav className="nav" aria-label="사이트 메뉴">
-      <L href="/" cls="nav-home">홈</L>
-      <Group label="향수" open={open.perfume} onToggle={t("perfume")}>
-        <L href="/perfumes">전체 향수</L>
-        <L href="/perfumes?filter=new">신제품 {newCount > 0 && <span className="nav-new">NEW {newCount}</span>}</L>
+      <L href="/" cls="nav-home">Home</L>
+      <Group label="Fragrances" open={open.perfume} onToggle={t("perfume")}>
+        <L href="/perfumes">All Fragrances</L>
+        <L href="/perfumes?filter=new">New Arrivals {newCount > 0 && <span className="nav-new">NEW {newCount}</span>}</L>
         <button className="nav-head sub" aria-expanded={open.brands} onClick={t("brands")}>
-          <span>브랜드</span><Chevron open={open.brands} />
+          <span>Brands</span><Chevron open={open.brands} />
         </button>
         <div className="nav-body" hidden={!open.brands}>
           {brands.map((b) => (
@@ -90,24 +90,24 @@ export default function SideNav({ brands, pending, newCount, user }: Props) {
           ))}
         </div>
       </Group>
-      <Group label="나의 향" open={open.mine} onToggle={t("mine")}>
-        <L href="/collection">내 컬렉션</L>
-        <L href="/wishlist">위시리스트</L>
-        <L href="/calendar">향뿌캘린더</L>
+      <Group label="My Scents" open={open.mine} onToggle={t("mine")}>
+        <L href="/collection">Collection</L>
+        <L href="/wishlist">Wishlist</L>
+        <L href="/calendar">Scent Diary</L>
       </Group>
-      <Group label="커뮤니티" open={open.community} onToggle={t("community")}>
-        <L href="/requests">신제품 요청 {pending > 0 && <span className="nav-badge">{pending}</span>}</L>
-        <L href="/newsletter">뉴스레터</L>
+      <Group label="Community" open={open.community} onToggle={t("community")}>
+        <L href="/requests">Requests {pending > 0 && <span className="nav-badge">{pending}</span>}</L>
+        <L href="/newsletter">Newsletter</L>
       </Group>
       <div className="nav-account">
         {user ? (
           <>
-            <L href="/me">{user.name} · 내 정보</L>
-            {user.isAdmin && <L href="/admin">관리</L>}
-            <form action="/auth/signout" method="post"><button className="nav-link as-btn" type="submit">로그아웃</button></form>
+            <L href="/me">{user.name} · Account</L>
+            {user.isAdmin && <L href="/admin">Admin</L>}
+            <form action="/auth/signout" method="post"><button className="nav-link as-btn" type="submit">Sign out</button></form>
           </>
         ) : (
-          <Link className="btn primary" href="/login" style={{ justifyContent: "center" }}>로그인 · 회원가입</Link>
+          <Link className="btn primary" href="/login" style={{ justifyContent: "center" }}>Sign in</Link>
         )}
       </div>
     </nav>
