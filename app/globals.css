@@ -576,3 +576,11 @@ input[type=text],input[type=email],input[type=password],textarea,select{border-r
 .nav-group>.nav-body>.nav-link:hover,.nav-group>.nav-body>.nav-head.sub:hover{color:var(--ink)}
 .nav-body .nav-body .nav-link.sub{font-size:12.5px;padding-block:5px}
 .nav-link[aria-current="page"]{color:var(--teal-deep)!important;font-weight:600}
+
+/* ============ v11: 상위 항목 사이 구분선, 로고 더 굵게 ============ */
+.side-brand .brandmark,.mbrand{font-weight:800;letter-spacing:.3em}
+.nav-link.nav-home{margin-bottom:0}
+.nav-group{border-top:1px solid var(--line);padding-block:6px}
+.nav-group>.nav-head{margin-top:4px}
+.nav-group:last-of-type{border-bottom:1px solid var(--line)}
+.nav-account{border-top:0;padding-top:24px}

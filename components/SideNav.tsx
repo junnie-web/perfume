@@ -127,7 +127,6 @@ export default function SideNav({ brands, pending, newCount, user }: Props) {
         <div className="side-top">
           <Link href="/" className="side-brand">
             <span className="brandmark">Parfumoir</span>
-            <span className="brandsub">파퓨무아 · 향의 회고록</span>
           </Link>
           <button className="close" aria-label="메뉴 닫기" onClick={() => setDrawer(false)}>×</button>
         </div>
