@@ -457,3 +457,17 @@ body{background:var(--bg)}
 .notice{background:var(--accent-soft);border-color:var(--teal-mid)}
 .av{background:var(--teal-mid);color:var(--teal-ink)}
 :focus-visible{outline-color:var(--teal-deep)}
+
+/* ============ v7: 배너를 가로 끝까지, 직각 모서리 ============ */
+.hero,.carousel{border-radius:0;margin-inline:-40px}
+.carousel{aspect-ratio:21/8;min-height:320px}
+.carousel .track,.carousel .slide{height:100%}
+.slide{min-height:0}
+.slide-text{padding-left:56px}
+.hero-text{padding-left:56px}
+.home-sec>.sec-h{margin-bottom:14px}
+@media (max-width:960px){
+  .hero,.carousel{margin-inline:-18px}
+  .slide-text,.hero-text{padding-left:24px}
+  .carousel{aspect-ratio:auto;min-height:300px}
+}
