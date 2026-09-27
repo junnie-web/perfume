@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { createClient } from "@/lib/supabase/client";
+import { sendLoginLink } from "./actions";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
@@ -21,11 +21,9 @@ export default function LoginPage() {
             e.preventDefault();
             setState("sending");
             const next = new URLSearchParams(window.location.search).get("next") ?? "/";
-            const { error } = await createClient().auth.signInWithOtp({
-              email: email.trim(),
-              options: { emailRedirectTo: `${window.location.origin}/auth/callback?next=${encodeURIComponent(next)}` },
-            });
-            if (error) { setErr(error.message); setState("error"); } else setState("sent");
+            const r = await sendLoginLink(email, next);
+            if (r.ok) setState("sent");
+            else { setErr(r.message ?? ""); setState("error"); }
           }}
         >
           <label className="f">이메일<input type="text" inputMode="email" autoComplete="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="you@example.com" required /></label>
