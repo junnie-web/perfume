@@ -1,23 +1,13 @@
 :root{
-  --bg:#F2F0F4; --surface:#FBFAFC; --sunk:#E9E5EE; --ink:#221E2B; --muted:#6B6476; --line:#DAD4E0;
-  --accent:#6B2A4A; --accent-ink:#FFFFFF; --accent-soft:#F0E2E9; --amber:#A8701A; --danger:#A33A3A;
+  color-scheme:light;
+  --teal:#3A9D9A; --teal-deep:#2C7F7C; --ivory:#FBF8EF;
+  --bg:#FBF8EF; --surface:#FFFDF7; --sunk:#F2EDDF; --ink:#1E2B2A; --muted:#5E6E6B; --line:#E4DCC8;
+  --accent:#3A9D9A; --accent-ink:#FFFFFF; --accent-soft:#E2F1EF; --amber:#B7862A; --danger:#B4473F;
   --serif:"Gowun Batang","Nanum Myeongjo","AppleMyungjo",serif;
   --latin:"Italiana","Gowun Batang",Georgia,serif;
   --sans:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
   --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
   --r:10px;
-}
-@media (prefers-color-scheme: dark){
-  :root:not([data-theme="light"]){
-    color-scheme:dark;
-    --bg:#15121A; --surface:#1E1A25; --sunk:#2A2432; --ink:#EEE8F3; --muted:#A49CAF; --line:#342D3D;
-    --accent:#E391B8; --accent-ink:#1D0F18; --accent-soft:#3B2432; --amber:#E2AE55; --danger:#E37C7C;
-  }
-}
-:root[data-theme="dark"]{
-  color-scheme:dark;
-  --bg:#15121A; --surface:#1E1A25; --sunk:#2A2432; --ink:#EEE8F3; --muted:#A49CAF; --line:#342D3D;
-  --accent:#E391B8; --accent-ink:#1D0F18; --accent-soft:#3B2432; --amber:#E2AE55; --danger:#E37C7C;
 }
 *{box-sizing:border-box}
 html,body{margin:0}
@@ -400,3 +390,52 @@ footer.site{margin-top:64px;padding-top:18px;border-top:1px solid var(--line);fo
 
 /* 접힌 메뉴는 확실히 숨겨요 (.nav-body의 display:flex가 hidden을 덮어쓰지 않게) */
 [hidden]{display:none!important}
+
+/* ============ v5: 청록 #3A9D9A + 밝은 아이보리 ============ */
+body{background:var(--bg)}
+.btn.primary{background:var(--teal);border-color:var(--teal);color:#fff;font-weight:600}
+.btn.primary:hover{background:var(--teal-deep);border-color:var(--teal-deep);filter:none}
+a{color:inherit}
+.linkish{color:var(--teal-deep)}
+
+/* 왼쪽 메뉴: 청록 배경 + 아이보리 글씨 */
+.sidenav{background:var(--teal);border-right:0;color:var(--ivory)}
+.side-brand{color:var(--ivory)}
+.side-brand .brandsub{color:rgba(251,248,239,.8)}
+.sidenav .close{color:var(--ivory)}
+.nav-link,.nav-head.sub{color:var(--ivory);font-size:15px;font-weight:500}
+.nav-head{color:rgba(251,248,239,.78)}
+.nav-head:hover{color:#fff}
+.nav-link.sub{color:rgba(251,248,239,.86);font-size:14px}
+.nav-link:hover{background:rgba(255,255,255,.12)}
+.nav-link[aria-current="page"]{color:#fff;font-weight:700;background:rgba(255,255,255,.18);box-shadow:inset 3px 0 0 var(--ivory)}
+.nav-link.as-btn{color:rgba(251,248,239,.86)}
+.nav-count{color:rgba(251,248,239,.7)}
+.nav-badge,.nav-new{background:var(--ivory);color:var(--teal-deep);font-weight:600}
+.nav-body .nav-body{border-left-color:rgba(255,255,255,.3)}
+.nav-account{border-top-color:rgba(255,255,255,.28)}
+.sidenav .btn.primary{background:var(--ivory);border-color:var(--ivory);color:var(--teal-deep)}
+.sidenav .btn.primary:hover{background:#fff}
+.sidenav :focus-visible{outline-color:var(--ivory)}
+
+/* 폰·세로 화면 위쪽 바 */
+@media (max-width:960px){
+  .mtop{background:var(--teal);border-bottom:0}
+  .mbrand{color:var(--ivory)}
+  .burger span{background:var(--ivory)}
+}
+
+/* 강조 요소 */
+.hero{background:var(--teal-deep)}
+.dots button[aria-selected="true"]{background:var(--ivory)}
+.stars{color:var(--amber)}
+.ai{background:var(--teal-deep);color:var(--ivory);--muted:rgba(251,248,239,.78)}
+.ai .btn{color:var(--ivory);border-color:rgba(251,248,239,.5)}
+.ai .btn.primary{background:var(--ivory);border-color:var(--ivory);color:var(--teal-deep)}
+.rec{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.18)}
+.rec .no{color:var(--ivory)}
+.taste{border-left-color:var(--ivory)}
+.scoreboard{background:var(--teal-deep)}
+.scoreboard .big{color:var(--ivory)}
+.new{background:var(--teal);color:#fff}
+.hotn{color:var(--teal-deep)}
